@@ -14,7 +14,7 @@ import time
 from book import *
 
 # Owned
-__author__ = 'Juan Kevin Trujillo (juankevinTR)'
+__author__ = 'Daniel Laureano Cerviño Cortínez (Danielcc97), Juan Kevin Trujillo (juankevinTR)'
 __license__ = '{license}'
 __version__ = '1.0.0'
 __email__ = 'me@juankevintrujillo.com'

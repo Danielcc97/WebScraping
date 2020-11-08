@@ -1,4 +1,4 @@
-# WebScraping of Books to Scrape
+# Web Scraping of Books to Scrape
 
 Versión preliminar de la práctica 1 (Web scraping) de la asignatura Tipología y ciclo de vida de los datos del Máster en Ciencia de Datos en la Universitat Oberta de Catalunya. Se aplican técnicas de web scraping mediante el lenguaje de programación Python para extraer así datos de la web [Books to Scrape](https://books.toscrape.com) y generar un dataset.
 

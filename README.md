@@ -44,6 +44,10 @@ python main.py
 * **Daniel Laureano Cerviño Cortínez** - *-* - [Danielcc97](https://github.com/Danielcc97)
 * **Juan Kevin Trujillo Rodríguez** - *-* - [juankevinTR](https://juankevintrujillo.com)
 
+## DOI 📖
+
+El dataset ha sido subido a Zenodo y registrado con el DOI: [10.5281/zenodo.4263215](https://doi.org/10.5281/ZENODO.4263215)
+
 ## Referencias 🖇️
 
 * Lawson, R. (2015). Web Scraping with Python. Packt Publishing Ltd.
@@ -52,6 +56,7 @@ python main.py
 
 ## License 📄
 
+Released Under CC0: Public Domain License
 
 
 

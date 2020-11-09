@@ -24,6 +24,8 @@ pip install urlparse
 * **pyProject/scraper.py**: contiene la implementación de la clase _BooksScraper_ cuyos métodos extraen el conjunto de datos de la web [Books to Scrape](https://books.toscrape.com).
 * **pyProject/book.py**: clase con las estructura de datos de un libro, y el método para convertir los datos a un formato CSV.
 * **pyProject/output.png**: captura de pantalla de una ejecución del programa, con comentarios y tiempo que ha tardado.
+* **pyProject/csv/dataset.csv**: dataset en CSV.
+* **pyProject/html**: directorio dataset en HTML.
 
 ## Despliegue-Ejecución 📦
 
@@ -50,7 +52,9 @@ El dataset ha sido subido a Zenodo y registrado con el DOI: [10.5281/zenodo.4263
 
 ## Referencias 🖇️
 
+* Hong Khai, T. (2019, December 18). Extract Transform Load (ETL) for Books to Scrape. https://medium.com/analytics-vidhya/extract-transform-load-etl-for-books-to-scrape-b0ff5f83095d
 * Lawson, R. (2015). Web Scraping with Python. Packt Publishing Ltd.
+* Oheix, J. (2018, December 11). An introduction to web scraping with Python. https://towardsdatascience.com/an-introduction-to-web-scraping-with-python-a2601e8619e5 
 * Subirats Maté, L., & Calvo González, M. (2019). Web scraping. Editorial UOC.
 * Toscrape.com. (n.d.). Books to Scrape. Retrieved 7 November 2020, from https://books.toscrape.com/
 

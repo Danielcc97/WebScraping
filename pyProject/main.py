@@ -13,12 +13,14 @@ __email__ = 'me@juankevintrujillo.com'
 # Code
 def main():
     csv_file_name = "dataset.csv"
+    html_file_name = "dataset.html"
 
     start_time = time.time()
     print("\n--- Scraping started ---")
     scraper = BooksScraper()
     scraper.scrape()
     scraper.data2csv(csv_file_name)
+    scraper.data2html(csv_file_name, html_file_name)
     print("--- Scraping finished in %s minutes ---" % round((time.time() - start_time) / 60, 3))
 
 

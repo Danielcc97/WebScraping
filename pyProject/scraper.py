@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from bs4 import BeautifulSoup
+from IPython.core.display import HTML
 from tqdm import tqdm
 from urllib.parse import urlparse
 
@@ -21,6 +22,7 @@ __email__ = 'me@juankevintrujillo.com'
 
 # Code
 CSV_PATH = "csv/"
+HTML_PATH = "html/"
 
 
 # Function to get last '/' from URL and change it for what we have
@@ -126,6 +128,11 @@ class BooksScraper:
                     handler.write(img_data)
                 bar.update(1)
 
+    # The directory is created if it doesn't exist
+    def __create_path_is_not_exists(self, path):
+        if not os.path.exists(path):
+            os.makedirs(path)
+
     def __add_header_csv(self, filename):
         df = pd.read_csv(CSV_PATH + filename, delimiter=",",
                          names=["Title", "Image", "Rating", "Description", "Category", "UPC", "Producttype",
@@ -133,6 +140,9 @@ class BooksScraper:
                          header=None)
         df.to_csv(CSV_PATH + filename, sep=',', header=True, index=False)
         print(df)
+
+    def __path_to_html_image(self, path):
+        return '<img src="' + path + '" width="60" >'
 
     def scrape(self):
         print("\tWeb Scraping of books' data from " + "'" + self.url + "'...")
@@ -166,11 +176,26 @@ class BooksScraper:
         self.books = all_books
 
     def data2csv(self, filename):
-        # The file is created if it doesn't exist, and overwrite
-        # Dump all the data with CSV format.
+        self.__create_path_is_not_exists(CSV_PATH)
+
+        # Dump all the data with CSV format
         with open(CSV_PATH + filename, "w") as file:
-            with tqdm(total=len(self.books), desc="\tCreating dataset...") as bar:
+            with tqdm(total=len(self.books), desc="\tCreating dataset in csv...") as bar:
                 for book in self.books:
                     file.write(book.get_book_csv_format() + "\n")
                     bar.update(1)
                 self.__add_header_csv(filename)
+
+    def data2html(self, csv_file, html_file_name):
+        self.__create_path_is_not_exists(HTML_PATH)
+
+        def path_to_html_image(path):
+            return '<img src="' + path + '" width="60" >'
+
+        with open(HTML_PATH + html_file_name, "w") as file:
+            with tqdm(total=len(self.books), desc="\tCreating dataset in html...") as bar:
+                df = pd.read_csv(CSV_PATH + csv_file, delimiter=",")
+                pd.set_option('display.max_colwidth', 10)
+                df["Image"] = path_to_html_image(df["Image"])
+                HTML(df.to_html(HTML_PATH + html_file_name, escape=False))
+                bar.update(1)

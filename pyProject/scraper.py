@@ -131,7 +131,7 @@ class BooksScraper:
                          names=["Title", "Image", "Rating", "Description", "Category", "UPC", "Producttype",
                                 "Priceextax", "Priceincltax", "Tax", "Availability", "Numberreviews"],
                          header=None)
-        df.to_csv(CSV_PATH + filename, sep=',')
+        df.to_csv(CSV_PATH + filename, sep=',', header=True, index=False)
         print(df)
 
     def scrape(self):

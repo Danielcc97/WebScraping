@@ -19,8 +19,10 @@ __license__ = '{license}'
 __version__ = '1.0.0'
 __email__ = 'me@juankevintrujillo.com'
 
-
 # Code
+CSV_PATH = "csv/"
+
+
 # Function to get last '/' from URL and change it for what we have
 # We need to do this cause the page content is not complete
 # SOURCE: https://www.geeksforgeeks.org/find-last-index-character-string/
@@ -124,6 +126,14 @@ class BooksScraper:
                     handler.write(img_data)
                 bar.update(1)
 
+    def __add_header_csv(self, filename):
+        df = pd.read_csv(CSV_PATH + filename, delimiter=",",
+                         names=["Title", "Image", "Rating", "Description", "Category", "UPC", "Producttype",
+                                "Priceextax", "Priceincltax", "Tax", "Availability", "Numberreviews"],
+                         header=None)
+        df.to_csv(CSV_PATH + filename, sep=',')
+        print(df)
+
     def scrape(self):
         print("\tWeb Scraping of books' data from " + "'" + self.url + "'...")
 
@@ -158,13 +168,9 @@ class BooksScraper:
     def data2csv(self, filename):
         # The file is created if it doesn't exist, and overwrite
         # Dump all the data with CSV format.
-        with open("csv/" + filename, "w") as file:
+        with open(CSV_PATH + filename, "w") as file:
             with tqdm(total=len(self.books), desc="\tCreating dataset...") as bar:
                 for book in self.books:
                     file.write(book.get_book_csv_format() + "\n")
                     bar.update(1)
-
-    def data2dataframe(self, filename):
-        print(pd.read_csv("csv/" + filename, delimiter=",",
-                          names=["Title", "Image", "Rating", "Description", "Category", "UPC", "Producttype",
-                                 "Priceextax", "Priceincltax", "Tax", "Availability", "Numberreviews"]))
+                self.__add_header_csv(filename)
